@@ -247,7 +247,7 @@ def check_cinder_vg(config):
             return
 
         server = utils.ScriptRunner(controller.CONF['CONFIG_CINDER_HOST'])
-        server.append('systemctl')
+        server.append('systemctl --version 2>/dev/null')
         try:
             server.execute()
             rst_cmd = 'systemctl restart openstack-cinder-volume.service'
